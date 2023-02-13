@@ -1,0 +1,25 @@
+name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
+.Random.seed|object|32eafaea5bbc20a6|||||||||||||||
+base_family|object|4b91f205af605e5b|||||||||||||||
+base_size|object|c476f3c65cb413c0|||||||||||||||
+clean_mid_f|function|a1686c07680658be|||||||||||||||
+clean_mindist_f|function|c37f0a5a4f105191|||||||||||||||
+clean_nmc_f|function|64c5e498ebafd067|||||||||||||||
+clean_spatial_troops_f|function|00a948bcb26df61d|||||||||||||||
+clean_troopdata_f|function|24d264ebd5c5a068|||||||||||||||
+clean_vdem_f|function|f5a8a724e6ffc797|||||||||||||||
+gridsize|object|0814f9181efb801d|||||||||||||||
+mid_clean|stem|bfa84e057ff23efb|576a60ecce1c9755|7d81835e9099bfea|221528594||t19398.9977469849s|04613e866439f269|17604|rds|local|vector|||0.605||
+mid_raw|stem|fe884c9d98261ba4|0c1f5dd551c258df|ef46db3751d8e999|-278124261||t19398.8836770033s|6750e7a20a1b121a|109|rds|local|vector|||1.959||
+mindist_clean|stem|3c7793be3a217f08|001069e6e8027bda|7338cd190005fe01|950889909||t19400.9596011724s|e0c66639553e9ac5|266023|rds|local|vector|||149.212||
+nmc_clean|stem|883426a833cbafd8|3bfb8eeed3051eca|65ccb02feb402dbe|825693237||t19398.8836824493s|2b876ba6e7891fde|144412|rds|local|vector|||0.018||
+nmc_raw|stem|7629e2733901313d|3d5f5d04aa6ecca2|ef46db3751d8e999|736506400||t19398.8413874036s|ff026697d66e9a9f|75|rds|local|vector|||2.517||
+projcrs|object|82f5274b94487ba2|||||||||||||||
+spatial_troops_clean|stem|e6e0196fd4e2f604|482e3da40ba7602d|b86ee2c019f13554|958651130||t19400.9631132335s|ec9559ac78d0e650|8468|rds|local|vector|||0.052||
+spatial_troops_f|function|6ae6d96192403c99|||||||||||||||
+troopdata_clean|stem|db7162f844758f8b|61d0442205acdf64|dacf03f7dfc7b718|-1113978060||t19399.9738087989s|ca59fcbdb6e33f52|24969|rds|local|vector|||0.033|Data include troop values for unknown locations and personnel listed as afloat.|
+vdem_clean|stem|b00bb4aff09dac80|8f1a9fda59d341dd|4520c7c1ae819fc2|-77077558||t19398.8476738355s|19dfbf228ded0c57|41744|rds|local|vector|||3.003||
+vdem_clean_f|function|e1379aecd7825b47|||||||||||||||
+vdem_raw|stem|13e9550a5a37b110|670982ad27e61ec3|ef46db3751d8e999|684360718|data/raw-data/Country_Year_V-Dem_Core_CSV_v12/V-Dem-CY-Core-v12.csv|t19052.6399884259s|738f11fab729e2bd|195648808|file|local|vector|||0||
+wgseqproj|object|b6a5edc23ed18647|||||||||||||||
+worker_options|object|9d8130e444394e6b|||||||||||||||
