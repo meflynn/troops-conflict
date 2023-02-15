@@ -10,7 +10,8 @@ clean_vdem_f <- function(filename) {
   vdem_clean_data <- data.table::fread(filename) |>
     dplyr::filter(year >= 1950) |>
     dplyr::select(year, country_name, v2x_polyarchy, v2x_libdem, COWcode) |>
-    dplyr::rename(ccode = COWcode)
+    dplyr::rename(ccode = COWcode) |>
+    dplyr::arrange(ccode, year)
 
   return(vdem_clean_data)
 
@@ -28,8 +29,14 @@ clean_nmc_f <- function(filename) {
 
 }
 
+# Read in SDGDP data from peacesciencer data. Original data are in weird format.
 
-# Read in SDGDP data from peacesciencer
+clean_gdp_f <- function() {
+
+  gdp_clean <- peacesciencer::cow_sdp_gdp |>
+    dplyr::filter(year >= 1950)
+
+}
 
 
 # Import and clean MID data
@@ -41,7 +48,6 @@ clean_mid_f <- function(filename) {
     dplyr::mutate(year = list(seq(styear, endyear))) |>
     tidyr::unnest(year) |>
     dplyr::filter(year >= 1950) |>
-    dplyr::mutate(ccode = ifelse(ccode == 260, 255, ccode)) |>
     dplyr::group_by(ccode, year) |>
     dplyr::summarise(mids_total = dplyr::n_distinct(dispnum),
                      mids_1_total = dplyr::n_distinct(dispnum[.data$hostlev==1]),
@@ -60,9 +66,39 @@ clean_mid_f <- function(filename) {
 clean_troopdata_f <- function(){
 
   troops_clean_data <- troopdata::get_troopdata(startyear = 1950, endyear = 2020) |>
+    filter(ccode != 255 | troops != 0) |> # Delete redundant Germany observation/
     mutate(ccode2 = ccode)
 
   return(troops_clean_data)
+
+}
+
+
+# Import and clean ATOP alliance data
+clean_allydata_f <- function(filename){
+
+  allydata_clean <- fread(filename) |>
+    dplyr::rename(ccode1 = stateA,
+                  ccode2 = stateB) |>
+    dplyr::select(ccode1, ccode2, year, defense) |>
+    filter(year >= 1950)
+
+  return(allydata_clean)
+
+}
+
+
+# Create data to identify US Allies
+clean_us_ally_f <- function(filename){
+
+  us_ally_clean <- fread(filename) |>
+    dplyr::rename(ccode1 = stateA,
+                  ccode2 = stateB) |>
+    dplyr::select(ccode1, ccode2, year, defense) |>
+    filter(year >= 1950) |>
+    filter(ccode1 == 2) |>
+    dplyr::rename(ccode = ccode2, us_ally = defense) |>
+    dplyr::select(ccode, year, us_ally)
 
 }
 
@@ -72,7 +108,7 @@ clean_troopdata_f <- function(){
 clean_mindist_f <- function(){
 
   startdate <- as.Date("1950-01-01", format = "%Y-%m-%d")
-  enddate <- as.Date("1958-01-01", format = "%Y-%m-%d")
+  enddate <- as.Date("2016-01-01", format = "%Y-%m-%d")
   datelist <- data.frame(date = seq(startdate, enddate, by = "1 year"))
 
   thedate <- startdate
@@ -104,8 +140,69 @@ clean_spatial_troops_f <- function(distlist, troopdata) {
     dplyr::mutate(invdistance = 1/mindist,
                   troops_w = invdistance * troops) |>
     dplyr::summarise(troops_w_mean = mean(troops_w, na.rm = TRUE)) |>
-    mutate(ccode = ifelse(ccode1 == 260, 255, ccode1))
+    dplyr::rename(ccode = ccode1)
 
   return(spatial_troops_data)
+
 }
 
+
+# Create spatial alliance measure
+
+clean_spatial_ally_f <- function(distlist, allydata) {
+
+  spatial_ally_data <- distlist |>
+    left_join(allydata, by = c("ccode1", "ccode2", "year")) |>
+    group_by(ccode1, year) |>
+    dplyr::mutate(defense = ifelse(is.na(defense), 0, defense),
+                  invdistance = 1/mindist,
+                  ally_w = invdistance * defense) |>
+    dplyr::summarise(ally_w_mean = mean(ally_w, na.rm = TRUE)) |>
+    dplyr::rename(ccode = ccode1)
+
+  return(spatial_ally_data)
+
+}
+
+# Create spatial US alliance measure
+
+clean_us_spatial_ally_f <- function(distlist, usallydata) {
+
+  spatial_us_ally_data <- distlist |>
+    left_join(usallydata, by = c("ccode2" = "ccode", "year")) |>
+    group_by(ccode1, year) |>
+    dplyr::mutate(us_ally = ifelse(is.na(us_ally), 0, us_ally),
+                  invdistance = 1/mindist,
+                  us_ally_w = invdistance * us_ally) |>
+    dplyr::summarise(us_ally_w_mean = mean(us_ally_w, na.rm = TRUE)) |>
+    dplyr::rename(ccode = ccode1)
+
+  return(spatial_us_ally_data)
+
+}
+
+
+
+# Combine data into single data set
+
+combine_data_f <- function(demdata, nmcdata, gdpdata, middata, troopsdata, usallydata, spatialtroopsdata, spatialallydata, spatialusallydata) {
+
+  out <- demdata |>
+    left_join(nmcdata) |>
+    left_join(gdpdata) |>
+    left_join(middata) |>
+    left_join(troopsdata, by = c("ccode", "year")) |>
+    left_join(usallydata) |>
+    left_join(spatialtroopsdata) |>
+    left_join(spatialallydata) |>
+    left_join(spatialusallydata) |>
+    filter(ccode != 2) |>
+    mutate(across(starts_with("mids_"), ~ ifelse(is.na(.x), 0, .x)),
+           us_ally = ifelse(is.na(us_ally), 0, us_ally),
+           across(c("milex", "troops_w_mean", "milper", "tpop", "upop", "troops", "ally_w_mean", "us_ally_w_mean"),
+                  ~ log1p(.x),
+                  .names = "{col}_log"))
+
+  return(out)
+
+}
