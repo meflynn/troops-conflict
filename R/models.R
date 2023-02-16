@@ -4,14 +4,19 @@
 
 models_base_f <- function(data) {
 
-  job::job(import = "all", "troops-mids-1" = {
+  # brms settings
+  CHAINS <- 4
+  CORES <- 4
+  ITERS <- 4000
+  WARMUP <- 2000
+  THIN <- 1
 
   # Get priors for the base model
   get_prior(bf(mids_total ~ troops_log + us_ally + troops_w_mean_log +
                    ally_w_mean_log + us_ally_w_mean_log + cinc + v2x_libdem +
                    wbpopest + milper_log + s(year) + (1 | ccode),
                  decomp = "QR"),
-              data = analysis_data,
+              data = data,
               family = negbinomial(link = "log", link_shape = "log"))
 
     PRIORS <- c(set_prior("normal(0, 2)", class = "b"),
@@ -38,9 +43,6 @@ models_base_f <- function(data) {
                   file = "output/troops-mids-1"
                   )
 
-  }
-  )
-
   return(temp)
 
 }
@@ -49,7 +51,12 @@ models_base_f <- function(data) {
 # Include interaction term between troops and spatial troops
 models_interaction_f <- function(data) {
 
-  job::job(import = "all", "troops-mids-1" = {
+  # brms settings
+  CHAINS <- 4
+  CORES <- 4
+  ITERS <- 4000
+  WARMUP <- 2000
+  THIN <- 1
 
     # Get priors for the base model
     get_prior(bf(mids_total ~ troops_log + troops_log:troops_w_mean_log +
@@ -83,9 +90,6 @@ models_interaction_f <- function(data) {
                     backend = "cmdstanr",
                     file = "output/troops-mids-2"
     )
-
-  }
-  )
 
   return(temp)
 

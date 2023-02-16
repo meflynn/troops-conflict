@@ -1,8 +1,8 @@
 name|type|data|command|depend|seed|path|time|size|bytes|format|repository|iteration|parent|children|seconds|warnings|error
 .Random.seed|object|32eafaea5bbc20a6|||||||||||||||
-ally_raw|stem|a2d4e0621187e3d9|a627b1912b6add94|ef46db3751d8e999|-603776277||t19401.8769805264s|8fcb0666863d3c08|92|rds|local|vector|||2.484||
-allydata_clean|stem|2b3c0dd25e33c492|311e527fbfba5686|b0ba85231563896c|-98908244||t19401.8804296147s|f4c9751a498431d7|40177|rds|local|vector|||0.313||
-analysis_data|stem|ebd9ee447a7b1664|3a01a58302fb4c71|d14814e8f7c804a6|611790623||t19403.9114920329s|ad22ead1236f1ddb|831480|rds|local|vector|||0.327|NaNs produced. NaNs produced|
+ally_raw|stem|a2d4e0621187e3d9|a627b1912b6add94|ef46db3751d8e999|-603776277||t19401.8769791667s|8fcb0666863d3c08|92|rds|local|vector|||2.484||
+allydata_clean|stem|2b3c0dd25e33c492|311e527fbfba5686|b0ba85231563896c|-98908244||t19401.8804282407s|f4c9751a498431d7|40177|rds|local|vector|||0.313||
+analysis_data|stem|ebd9ee447a7b1664|3a01a58302fb4c71|d14814e8f7c804a6|611790623||t19403.9114814815s|ad22ead1236f1ddb|831480|rds|local|vector|||0.327|NaNs produced. NaNs produced|
 base_family|object|7597a77d39252fbf|||||||||||||||
 base_size|object|fb755ea17e7be4b3|||||||||||||||
 CHAINS|object|4fd03901ce9470f4|||||||||||||||
@@ -20,29 +20,31 @@ clean_vdem_f|function|60e57067b7eaf2d6|||||||||||||||
 combine_data_f|function|5cf3c43b2d696a72|||||||||||||||
 CORES|object|4fd03901ce9470f4|||||||||||||||
 descriptive_plots_f|function|f4b7ba0a706fe526|||||||||||||||
-figure_out|stem|26308d7c88e45db3|2904b6c08ed88819|f37e6e1812ddc372|1522677030||t19403.9114984388s|abbdb7fe746336f0|76|rds|local|vector|||0.549|1m22mRemoved 1219 rows containing missing values geom_point.. 1m22mRemoved 5511 rows containing missing values geom_point.|
-gdp_clean|stem|f3396bc3a851c7ab|1cbf44108b3f0acc|d4e653a649155eb0|-622557813||t19401.9001820565s|428343f08fbe1966|130257|rds|local|vector|||2.208||
+figure_out|stem|26308d7c88e45db3|2904b6c08ed88819|f37e6e1812ddc372|1522677030||t19402.8919212963s|abbdb7fe746336f0|76|rds|local|vector|||0.549|1m22mRemoved 1219 rows containing missing values geom_point.. 1m22mRemoved 5511 rows containing missing values geom_point.|
+gdp_clean|stem|f3396bc3a851c7ab|1cbf44108b3f0acc|d4e653a649155eb0|-622557813||t19401.9001736111s|428343f08fbe1966|130257|rds|local|vector|||2.208||
 gridsize|object|0814f9181efb801d|||||||||||||||
 ITER|object|a348d163359ff9d0|||||||||||||||
 ITERS|object|a348d163359ff9d0|||||||||||||||
-mid_clean|stem|569ec72d3382b867|576a60ecce1c9755|d1106ebf56805822|221528594||t19401.8922725343s|489930f0a0ed8334|17060|rds|local|vector|||0.405||
-mid_raw|stem|fe884c9d98261ba4|0c1f5dd551c258df|ef46db3751d8e999|-278124261||t19398.8836770033s|6750e7a20a1b121a|109|rds|local|vector|||1.959||
-mindist_clean|stem|da9ddb17e69c3875|001069e6e8027bda|c8b76b0c8b568b64|950889909||t19401.7436949944s|8e2abef0a4f29c4e|11017054|rds|local|vector|||1910.691||
-models_base_f|function|f297e2532ad47fda|||||||||||||||
+mid_clean|stem|569ec72d3382b867|576a60ecce1c9755|d1106ebf56805822|221528594||t19401.8922685185s|489930f0a0ed8334|17060|rds|local|vector|||0.405||
+mid_raw|stem|fe884c9d98261ba4|0c1f5dd551c258df|ef46db3751d8e999|-278124261||t19398.8836689815s|6750e7a20a1b121a|109|rds|local|vector|||1.959||
+mindist_clean|stem|da9ddb17e69c3875|001069e6e8027bda|c8b76b0c8b568b64|950889909||t19401.7436921296s|8e2abef0a4f29c4e|11017054|rds|local|vector|||1910.691||
+model_troops_mids_1|stem|5290cc7ab93411cc|bd15c9a01dfe5765|e8edf3a5ba2b8ac3|-710676270||t19403.926555843s|0dad7fdef1eadefb|21833427|rds|local|vector|||228.235|Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. The global prior normal0, 3 of class sd will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See set_prior and get_prior for more details.|
+model_troops_mids_2|stem|846e5c9669e6c7ee|246377985a549b70|d1ca98e429af9783|80498466||t19403.9292598731s|128e69b3bd5eb10c|21985558|rds|local|vector|||232.669|Rows containing NAs were excluded from the model.. Rows containing NAs were excluded from the model.. The global prior normal0, 3 of class sd will not be used in the model as all related coefficients have individual priors already. If you did not set those priors yourself, then maybe brms has assigned default priors. See set_prior and get_prior for more details.|
+models_base_f|function|61de8be302c56454|||||||||||||||
 models_f|function|b549dd3ce00f05d6|||||||||||||||
-models_interaction_f|function|076d4f5c21005396|||||||||||||||
+models_interaction_f|function|76672f738c86d2f2|||||||||||||||
 models_out|stem|7b06c7a75d873ba7|b3c6c485c5a40270|0b5d75520e84f05b|1270671523||t19402.9323999248s|d332921571ed7533|21521933|rds|local|vector|||1124.368|NaNs produced. Rows containing NAs were excluded from the model.|
-nmc_clean|stem|95eed24a38f918eb|3bfb8eeed3051eca|8748e52d3421fcce|825693237||t19401.7191516736s|f7e997874f5bec70|144179|rds|local|vector|||0.031||
-nmc_raw|stem|7629e2733901313d|3d5f5d04aa6ecca2|ef46db3751d8e999|736506400||t19398.8413874036s|ff026697d66e9a9f|75|rds|local|vector|||2.517||
+nmc_clean|stem|95eed24a38f918eb|3bfb8eeed3051eca|8748e52d3421fcce|825693237||t19401.7191435185s|f7e997874f5bec70|144179|rds|local|vector|||0.031||
+nmc_raw|stem|7629e2733901313d|3d5f5d04aa6ecca2|ef46db3751d8e999|736506400||t19398.8413773148s|ff026697d66e9a9f|75|rds|local|vector|||2.517||
 projcrs|object|82f5274b94487ba2|||||||||||||||
-spatial_ally_clean|stem|e8260353ca13ebb2|cf1625bf830420cd|f9cea05eb37b22ba|-263040028||t19401.9117142086s|3278818b47a59ff5|56768|rds|local|vector|||0.803||
-spatial_troops_clean|stem|dcb42509de5b029a|482e3da40ba7602d|2a37ff5461a252ba|958651130||t19401.8956875146s|c3f432bdef1a85f6|105657|rds|local|vector|||0.982||
+spatial_ally_clean|stem|e8260353ca13ebb2|cf1625bf830420cd|f9cea05eb37b22ba|-263040028||t19401.911712963s|3278818b47a59ff5|56768|rds|local|vector|||0.803||
+spatial_troops_clean|stem|dcb42509de5b029a|482e3da40ba7602d|2a37ff5461a252ba|958651130||t19401.8923148148s|c3f432bdef1a85f6|105657|rds|local|vector|||0.982||
 spatial_troops_f|function|6ae6d96192403c99|||||||||||||||
-spatial_us_ally_clean|stem|a7af250fb0faae8c|ac2297f93dcb05bd|52f594d7e1a5e1ab|1630520931||t19401.911704693s|12c5f353300695eb|78680|rds|local|vector|||1.062||
+spatial_us_ally_clean|stem|a7af250fb0faae8c|ac2297f93dcb05bd|52f594d7e1a5e1ab|1630520931||t19401.9117013889s|12c5f353300695eb|78680|rds|local|vector|||1.062||
 THIN|object|a2a52dfe4e065e93|||||||||||||||
-troopdata_clean|stem|cd98af98ddec7758|61d0442205acdf64|93207622e49f11c8|-1113978060||t19401.8769811979s|d57ecdd060fa9893|24968|rds|local|vector|||0.034|Data include troop values for unknown locations and personnel listed as afloat.|
-usally_clean|stem|129590ff03768344|d59f4fc528d32d5a|c58f453b8956207e|-1442276543||t19401.9099427679s|e8f5d06f596d02e4|1123|rds|local|vector|||0.325||
-vdem_clean|stem|2b608230d00d0649|8f1a9fda59d341dd|17a293b8702588d3|-77077558||t19401.8923132776s|7aa6290bf7e534ac|41288|rds|local|vector|||3.497||
+troopdata_clean|stem|cd98af98ddec7758|61d0442205acdf64|93207622e49f11c8|-1113978060||t19401.8769791667s|d57ecdd060fa9893|24968|rds|local|vector|||0.034|Data include troop values for unknown locations and personnel listed as afloat.|
+usally_clean|stem|129590ff03768344|d59f4fc528d32d5a|c58f453b8956207e|-1442276543||t19401.9099421296s|e8f5d06f596d02e4|1123|rds|local|vector|||0.325||
+vdem_clean|stem|2b608230d00d0649|8f1a9fda59d341dd|17a293b8702588d3|-77077558||t19401.8923032407s|7aa6290bf7e534ac|41288|rds|local|vector|||3.497||
 vdem_clean_f|function|e1379aecd7825b47|||||||||||||||
 vdem_raw|stem|13e9550a5a37b110|670982ad27e61ec3|ef46db3751d8e999|684360718|data/raw-data/Country_Year_V-Dem_Core_CSV_v12/V-Dem-CY-Core-v12.csv|t19052.6399884259s|738f11fab729e2bd|195648808|file|local|vector|||0||
 WARMUP|object|758147688a24b6e0|||||||||||||||
